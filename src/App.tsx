@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import {OnOff} from './components/OnOff/OnOff';
+import {UncontrolledAccordion} from './components/UncontrolledAccordion/UncontrolledAccordion';
+import {RaitingValueType, Rating} from './components/Rating/Rating';
+import {UncontrolledRating} from './components/UncontrolledRating/UncontrolledRating';
+import {Accordion} from './components/Accordion/Accordion';
+import {UncontrolledOnOff} from './components/UncontrolledOnOff/UncontrolledOnOff';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    console.log('App rendering')
+
+    const [valueRating, setRaitingValue] = useState<RaitingValueType>(0);
+    const [collapsed, setCollapsed] = useState<boolean>(false);
+    const [switchOn, setSwitchOn] = useState<boolean>(false)
+
+    return (
+        <div className={"App"}>
+
+            {/*<OnOff on={switchOn} setOn={setSwitchOn}/> {switchOn.toString()}*/}
+            <UncontrolledOnOff onChange={setSwitchOn}/> {switchOn.toString()}
+            {/*передаем в неконтролируемый компонент обработчик, чтобы компонент уведомлял нас, хотя значение он сам меняет
+            уведомляет App о значении*/}
+
+            <Accordion titleValue={'Menu Accordion'} collapsed={collapsed} setCollapsed={setCollapsed}/>
+            <UncontrolledAccordion titleValue={'Menu SelcontrolledAccordion'} />
+
+            <UncontrolledRating/>
+            <Rating value={valueRating} onClick={setRaitingValue}/>
+
+
+
+        </div>
+    );
 }
+
+type PagePropsType = {
+    title: string
+}
+
+function PageTitle(props: PagePropsType) {
+    return (
+        <h1>
+            {props.title}
+        </h1>
+    );
+}
+
 
 export default App;
