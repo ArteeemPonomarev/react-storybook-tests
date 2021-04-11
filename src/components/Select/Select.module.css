@@ -1,0 +1,48 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+.wrapper{
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+.select{
+    margin: 10px;
+    width: 100px;
+    height: 40px;
+    border: 2px solid #c4c4c4;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-left: 10px;
+
+}
+.select:hover {
+    border-color: #1ea7fd;
+}
+.angleBlock{
+    margin-right: 10px;
+    margin-bottom: 15px;
+}
+.angle{
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(135deg, transparent 50%, #1ea7fd 50%);
+    transform: rotate(45deg);
+    display: inline-block;
+}
+.options {
+    border: 1px solid black;
+    width: 100px;
+    background-color: #333333;
+    color: #fff;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+.option:hover{
+    background-color: rgba(196, 196, 196, .5);
+}

@@ -15,6 +15,8 @@ function App() {
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const [switchOn, setSwitchOn] = useState<boolean>(false)
 
+    const onItemOnCLick = () => alert('hey')
+
     return (
         <div className={"App"}>
 
@@ -23,7 +25,7 @@ function App() {
             {/*передаем в неконтролируемый компонент обработчик, чтобы компонент уведомлял нас, хотя значение он сам меняет
             уведомляет App о значении*/}
 
-            <Accordion titleValue={'Menu Accordion'} collapsed={collapsed} setCollapsed={setCollapsed}/>
+            <Accordion titleValue={'Menu Accordion'} collapsed={collapsed} setCollapsed={setCollapsed} items= {[{title: 'Artem', value: 1}, {title: 'Alex', value: 2}, {title: 'Valera', value: 3}, {title: 'Victor', value: 4}]} onClick={onItemOnCLick}/>
             <UncontrolledAccordion titleValue={'Menu SelcontrolledAccordion'} />
 
             <UncontrolledRating/>

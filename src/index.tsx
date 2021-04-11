@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Select, {ItemType} from './components/Select/Select';
+
+let items: ItemType[] = [{title: 'Artem', value: 1}, {title: 'Sergei', value: 2}, {title: 'Maxim', value: 3}]
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Select items={items} value={1} onChange={() => {}}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
