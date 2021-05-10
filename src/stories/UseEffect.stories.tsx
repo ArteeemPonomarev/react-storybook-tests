@@ -6,9 +6,9 @@ export default {
 
 export const SimpleExample = () => {
     const [fake, setFake] = useState(1)
-    const[counter, setCounter] = useState(1);
+    const [counter, setCounter] = useState(1);
 
-    console.log("Simple example")
+    console.log('Simple example')
 
     useEffect(() => {
         console.log('useEffect every render')
@@ -25,7 +25,7 @@ export const SimpleExample = () => {
         document.title = counter.toString();
     }, [counter])
 
-    return(
+    return (
         <>
             Hello, {counter} {fake}
             <button onClick={() => setFake(fake + 1)}>fake+</button>
@@ -36,9 +36,9 @@ export const SimpleExample = () => {
 
 export const SetTimeoutExample = () => {
     const [fake, setFake] = useState(1)
-    const[counter, setCounter] = useState(1);
+    const [counter, setCounter] = useState(1);
 
-    console.log("Simple example")
+    console.log('Simple example')
 
     // useEffect(() => {
     //     setTimeout(() => {
@@ -51,14 +51,36 @@ export const SetTimeoutExample = () => {
         setInterval(() => {
             console.log('tick :' + counter)
             setCounter((state) => state + 1)
-        },1000)
-    },[])
+        }, 1000)
+    }, [])
 
-    return(
+    return (
         <>
-            Hello, counter: {counter}  - fake: {fake}
+            Hello, counter: {counter} - fake: {fake}
             <button onClick={() => setFake(fake + 1)}>fake+</button>
             <button onClick={() => setCounter(counter + 1)}>counter+</button>
+        </>
+    )
+}
+
+const calculateTime = () => {
+    return `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`
+}
+
+export const Clock = () => {
+    const [time, setTime] = useState<string>(calculateTime);
+
+
+
+    useEffect(() => {
+        setInterval(() => {
+            setTime(calculateTime())
+        }, 1000)
+    },[])
+
+    return (
+        <>
+            Time now: {time}
         </>
     )
 }
